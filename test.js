@@ -3,7 +3,8 @@ import { Dictionary } from './dictionary.js';
 import  {AnswerCheck} from './answercheck.js';
 import {TaskWord} from './taskWord.js';
 import {GuessArray} from './guessarray.js';
-
+import {Display} from './display.js';
+import { Hangman } from './hangmandraw.js';
 
 async function test(){
     
@@ -30,12 +31,16 @@ async function AnswerTEst() {
     let button = document.getElementById('submit');
 
     let guessArray = new GuessArray();  //ez a player classban lesz
+    Display.showUnderScore(word.underscoreArray);
 
     button.addEventListener('click', event=>{
 
-        //console.log(guess.value,taskword);
-        AnswerCheck.checkAndTransformLetter(guess.value,word);
-        answer.textContent=word.underscoreArray;  //display class fogja megmutatni
+       if ( AnswerCheck.checkAndTransformLetter(guess.value,word)) {
+            console.log('jó')
+            Display.showGoodAttempt(word.underscoreArray);
+            //Display.bottomDraw();
+       }
+    
     })
 
 
@@ -44,4 +49,24 @@ async function AnswerTEst() {
 }
 
 
-AnswerTEst()
+AnswerTEst();
+ let hangman = new Hangman();
+
+
+hangman.drawBottom();
+hangman.drawMainLine();
+hangman.drawHorizontalLine();
+hangman.drawDiagonalLine();
+hangman.drawRope();
+hangman.drawHead();
+hangman.drawBody();
+hangman.drawLeftFoot();
+hangman.drawRightFoot();
+
+// window.setTimeout(()=> {
+//     hangman.clearCanvas();
+// },3000) 
+
+
+
+

@@ -16,23 +16,36 @@
         <div class="col-10">
                 <h1>Hangman</h1>
             </div>
-            <div class="col-5">
-                <p>write your guess here</p>
-            </div>
+           
         
             <div class="col-5">
+                <p>Write your guess here:</p>
+                
                 <input type="text" id="guess" maxlength="1">
                 <button id="submit">Submit</button>
             </div>
+            <br>
         
-            <div class="col-5">
-                <p id="answer"></p>
-            </div>
+            <div class="col-10">
+                <div class="row" id='answer'>
 
+                </div>
+            </div>
+           
             <div class="col-5">
                 <p id="warning"></p>
             </div>
+          
+            <div class="row">
+
+                <div class="col-10">
+                    <canvas id="hangman" width="300" height="300"></canvas>
+                </div>
+
+            </div>
     </div>
+
+   
     
 
 

@@ -1,9 +1,25 @@
-.col-5{
+.col-10,.col-5{
     margin: auto; 
+    
 }
-.col-10 {
+
+#answer {
+    padding-top: 25px;
     margin: auto;
+   
 }
+
 h1 {
     text-align: center;
+}
+
+.letter {
+    margin: 12px;
+    text-transform: uppercase;
+    
+}
+
+#hangman {
+    border: solid black 1px;
+    margin: auto;
 }

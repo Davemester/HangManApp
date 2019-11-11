@@ -1,13 +1,9 @@
-//import {GuessArray} from './guessarray.js';
+import {Display} from './display.js';
 
 
 export class AnswerCheck {
 
-    /* constructor(taskWord) {
-
-        this.taskWord = taskWord;
-    } */
-
+  
     static checkAnswer(guessArray,taskWord) {
 
         return (taskWord.word === guessArray.makeFullString())
@@ -17,16 +13,20 @@ export class AnswerCheck {
        
 
     if (!taskWord.wordLetters.includes(letter)) {
-       document.getElementById('warning').textContent = 'Wrong letter try Again';    //ezt majd a display classba kell
-       window.setTimeout(()=>{
-           document.getElementById('warning').textContent='';   //betenni
-       },3000);
+       Display.showWrongAttempt();
        return;
     }
 
-    let position = taskWord.wordLetters.indexOf(letter);
-    taskWord.transformUnderScore(letter, position);
 
+    taskWord.wordLetters.forEach((item,position)=>{
+        if ( item === letter) {
+            console.log(position);
+            taskWord.transformUnderScore(item, position);
+            
+        }
+    })
+    return true;
+    
    }
 
 } 
