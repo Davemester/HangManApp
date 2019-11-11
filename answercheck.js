@@ -1,4 +1,4 @@
-import {GuessArray} from './guessarray.js';
+//import {GuessArray} from './guessarray.js';
 
 
 export class AnswerCheck {
@@ -8,18 +8,25 @@ export class AnswerCheck {
         this.taskWord = taskWord;
     } */
 
-    checkAnswer(guessArray,taskWord) {
+    static checkAnswer(guessArray,taskWord) {
 
         return (taskWord.word === guessArray.makeFullString())
     } 
 
-   checkAndTransformLetter(letter,taskWord) {
+   static checkAndTransformLetter(letter,taskWord) {
+       
 
-        let position = taskWord.wordsLetters.indexOf(letter);
-        if (taskWord.wordsLetters.includes(letter)) {
-                taskWord.transformUnderScore(letter, position);
-        }
-      
+    if (!taskWord.wordLetters.includes(letter)) {
+       document.getElementById('warning').textContent = 'Wrong letter try Again';    //ezt majd a display classba kell
+       window.setTimeout(()=>{
+           document.getElementById('warning').textContent='';   //betenni
+       },3000);
+       return;
+    }
+
+    let position = taskWord.wordLetters.indexOf(letter);
+    taskWord.transformUnderScore(letter, position);
+
    }
 
 } 
