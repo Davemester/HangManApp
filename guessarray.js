@@ -1,7 +1,7 @@
 
 export class GuessArray {
 
-    constructor() {   //ezt majd a player classban példányosítani
+    constructor() {   
        
         this.guessArray = [];
         
@@ -9,16 +9,18 @@ export class GuessArray {
 
 
     addToGuessArray(letter) {
-        this.guessArray.push(letter);
+        console.log(letter)
+        if (!this.guessArray.includes(letter)) {
+            console.log('nincs benne')
+            this.guessArray.push(letter);
+        }
     }
 
     clearGuessArray () {
         this.guessArray = [];
     }
 
-   /*  addToGoodAnswerArray(letter) {
-        this.goodAnswerArray.push(letter);
-    } */
+   
 
     makeFullString() {
         return this.guessArray.concat('');

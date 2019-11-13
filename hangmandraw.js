@@ -2,14 +2,14 @@ export class Hangman {
 
 
     constructor(){
-
-        this.canvas = document.getElementById('hangman');
-        this.canvasDrawer = this.canvas.getContext('2d');
-        console.log(this.canvasDrawer,this.canvas)
-        /*this.drawList =  [this.drawBottom,this.drawMainLine,this.drawHorizontalLine,this.drawDiagonalLine,
-        this.drawRope,this.drawHead,this.drawBody,this.drawLeftFoot,this.drawRightFoot,
-        this.drawLeftArm,this.drawRightArm,this.drawLeftEye,this.drawRightEye,this.drawMouth]; */
         
+        this.canvasParent = document.getElementById('hangman');
+        this.resetCanvas();
+        this.canvasParent.innerHTML=`<canvas id="hangmancanvas" width="300" height="300"></canvas>`;
+        this.canvas = this.canvasParent.firstChild;
+        this.canvasDrawer = this.canvas.getContext('2d');
+        this.clearCanvas();
+       
     }
 
 
@@ -18,26 +18,23 @@ export class Hangman {
         this.canvasDrawer.clearRect(0,0,300,300)
     }
 
-    drawHangMan(drawparts) {
+    resetCanvas() {
+        this.canvasParent.innerHTML='';
+    }
 
+    drawHangMan(drawparts) {
+       
         let drawList = [this.drawBottom,this.drawMainLine,this.drawHorizontalLine,this.drawDiagonalLine,
             this.drawRope,this.drawHead,this.drawBody,this.drawLeftFoot,this.drawRightFoot,
             this.drawLeftArm,this.drawRightArm,this.drawLeftEye,this.drawRightEye,this.drawMouth];
-        
-        /* drawList.forEach(item=>{
-            item.apply(this.canvasDrawer);
-        }) */
-        this.clearCanvas(); 
-      
-        for (let i = 0; i < drawparts; i++){
-            console.log('mennyi loop?');
-            drawList[i].call(this.canvasDrawer);
-        } 
+       
+
+        drawList[drawparts-1].call(this.canvasDrawer);
         
     }
     
     drawBottom() {
-       console.log(this)
+       
         this.lineWidth = 10;
         this.moveTo(10,280);
         this.lineTo(80,280);

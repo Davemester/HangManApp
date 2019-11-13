@@ -35,12 +35,13 @@
         document.getElementById('attemptsleft').value = attempts;
     }
 
-    static showGuessedLetters(letter) {
+    static showGuessedLetters(letterList) {
+        this.clearGuessedLetters();
+        letterList.forEach(item=>{
+            
+            document.getElementById('guesslist').value += `${item};`;
+        }) 
 
-        document.getElementById('guesslist').value += `${letter}; `;
-
-        //document.getElementById('guesslist').value = letters.concat('');
-       
     }
 
     static clearGuessedLetters() {
@@ -60,6 +61,20 @@
         let elClone = el.cloneNode(true);   
 
         el.parentNode.replaceChild(elClone, el);
+    }
+
+    static showWinningImage() {
+        document.getElementById('winimage').style.display='block';
+    }
+
+    static showLooseImage() {
+        document.getElementById('gameover').style.display='block';
+    }
+
+    static hideImages() {
+        document.querySelectorAll('img').forEach(item=>{
+            item.style.display='none';
+        })
     }
 
  }
