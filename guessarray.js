@@ -2,9 +2,9 @@
 export class GuessArray {
 
     constructor() {   //ezt majd a player classban példányosítani
-        // this.guess='';
+       
         this.guessArray = [];
-        //this.goodAnswerArray = [];
+        
     }
 
 
@@ -20,9 +20,9 @@ export class GuessArray {
         this.goodAnswerArray.push(letter);
     } */
 
-  /*   makeFullString() {
-        return this.addToGoodAnswerArray.concat('');
-    } */
+    makeFullString() {
+        return this.guessArray.concat('');
+    } 
 
 
 

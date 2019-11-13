@@ -1,26 +1,20 @@
+ 
  export class Display {
-/* 
-    constructor() {
-    } */
 
    static showWrongAttempt(){
 
-        document.getElementById('warning').textContent = 'Wrong letter try Again';    //ezt majd a display classba kell
+        document.getElementById('warning').textContent = 'Wrong letter try Again';  
         window.setTimeout(()=>{
-           document.getElementById('warning').textContent='';   //betenni
+           document.getElementById('warning').textContent='';   
        },3000);
-
     }
 
     static showGoodAttempt(array) {
-
+        
         array.forEach((element,index) => {
             let html = document.querySelector('#answer').children[index].firstElementChild;
             html.textContent = element;
-            //document.getElementById('answer').appendChild(html);
-
         });
-
     }
 
     static showUnderScore(array) {
@@ -31,19 +25,41 @@
             html.classList.add('letter');
             document.getElementById('answer').appendChild(html);
         })
+    }
+
+    static showLenght(len) {
+        document.getElementById('length').value=len;
+    }
+
+    static showAttemptsLeft(attempts) {
+        document.getElementById('attemptsleft').value = attempts;
+    }
+
+    static showGuessedLetters(letter) {
+
+        document.getElementById('guesslist').value += `${letter}; `;
+
+        //document.getElementById('guesslist').value = letters.concat('');
+       
+    }
+
+    static clearGuessedLetters() {
+        document.getElementById('guesslist').value='';
+    }
+
+    static boardReset() {
+
+        this.clearGuessedLetters();
+        document.getElementById('answer').innerHTML='';
+        
 
     }
 
+    static resetEventListener(element){
+        let el = element;     /* document.querySelector('.colorpicker'); */
+        let elClone = el.cloneNode(true);   
 
-  /*  static draw (starta, endb, drawtox, drawtoy) {
-        picture.moveTo(starta, endb);
-        picture.lineTo(drawtox, drawtoy);
-        picture.stroke();
-    };
-
-   static bottomDraw () {
-        document.getElementById('hangman').this.draw(0, 150, 150, 150);
-    };
- */
+        el.parentNode.replaceChild(elClone, el);
+    }
 
  }

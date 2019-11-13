@@ -1,32 +1,20 @@
-import {Display} from './display.js';
-
 
 export class AnswerCheck {
 
   
     static checkAnswer(guessArray,taskWord) {
 
-        return (taskWord.word === guessArray.makeFullString())
+        let currentState = taskWord.makeStringFromArray(taskWord.underscoreArray);
+       
+        return (taskWord.word === currentState);
     } 
 
-   static checkAndTransformLetter(letter,taskWord) {
+   static checkLetter(letter,taskWord) {
        
-
-    if (!taskWord.wordLetters.includes(letter)) {
-       Display.showWrongAttempt();
-       return;
+    return taskWord.wordLetters.includes(letter); 
+      
     }
 
 
-    taskWord.wordLetters.forEach((item,position)=>{
-        if ( item === letter) {
-            console.log(position);
-            taskWord.transformUnderScore(item, position);
-            
-        }
-    })
-    return true;
-    
    }
 
-} 

@@ -12,6 +12,10 @@
 h1 {
     text-align: center;
 }
+#length,#attemptsleft,#guess {
+    width:25px;
+    height: 25px;
+}
 
 .letter {
     margin: 12px;

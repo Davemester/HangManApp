@@ -24,8 +24,24 @@ export class TaskWord {
     }
     
     makeStringFromArray(array) {
-        let result = array.concat('');
+        let result='';
+
+        array.forEach(item =>{
+            if (item!=='_'){
+                result+=item;
+            }
+        })
         return result;
+    }
+
+
+    transfromWord(letter) {
+        this.wordLetters.forEach((item,position)=>{
+            if ( item === letter) {
+                
+                this.transformUnderScore(item, position);
+            }
+        })
     }
 
 

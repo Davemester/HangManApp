@@ -1,6 +1,34 @@
 
-import { Dictionary } from './dictionary.js';
-import  {AnswerCheck} from './answercheck.js';
+import { GameLogic} from './gamelogic.js';
+import { Hangman } from './hangmandraw.js';
+
+
+
+
+function mainScript(){
+    
+    let gamelogic = new GameLogic();
+    gamelogic.start();
+}
+document.getElementById('start').onclick=mainScript; 
+
+
+
+/* var hangman = new Hangman();
+//hangman.drawHangMan(8);
+
+function clear(){
+    hangman.clearCanvas()
+}
+
+document.getElementById('submit').onclick = clear;
+ */
+
+
+
+
+
+/* import  {AnswerCheck} from './answercheck.js';
 import {TaskWord} from './taskWord.js';
 import {GuessArray} from './guessarray.js';
 import {Display} from './display.js';
@@ -43,8 +71,6 @@ async function AnswerTEst() {
     
     })
 
-
-
     
 }
 
@@ -53,15 +79,8 @@ AnswerTEst();
  let hangman = new Hangman();
 
 
-hangman.drawBottom();
-hangman.drawMainLine();
-hangman.drawHorizontalLine();
-hangman.drawDiagonalLine();
-hangman.drawRope();
-hangman.drawHead();
-hangman.drawBody();
-hangman.drawLeftFoot();
-hangman.drawRightFoot();
+hangman.drawHangMan(9); */
+
 
 // window.setTimeout(()=> {
 //     hangman.clearCanvas();

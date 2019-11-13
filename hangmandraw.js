@@ -5,82 +5,151 @@ export class Hangman {
 
         this.canvas = document.getElementById('hangman');
         this.canvasDrawer = this.canvas.getContext('2d');
-        this.canvasDrawer.lineWidth = 10;
-        this.drawList = [this.drawBottom,this.drawMainLine,this.drawHorizontalLine,this.drawDiagonalLine,
-        this.drawRope,this.drawHead,this.drawBody,this.drawLeftFoot,this.drawRightFoot];
+        console.log(this.canvasDrawer,this.canvas)
+        /*this.drawList =  [this.drawBottom,this.drawMainLine,this.drawHorizontalLine,this.drawDiagonalLine,
+        this.drawRope,this.drawHead,this.drawBody,this.drawLeftFoot,this.drawRightFoot,
+        this.drawLeftArm,this.drawRightArm,this.drawLeftEye,this.drawRightEye,this.drawMouth]; */
+        
     }
 
 
     clearCanvas() {
+       
         this.canvasDrawer.clearRect(0,0,300,300)
     }
 
-    drawRect() {
-        this.canvasDrawer.fillRect(0,0,150,75);
-    }
+    drawHangMan(drawparts) {
 
+        let drawList = [this.drawBottom,this.drawMainLine,this.drawHorizontalLine,this.drawDiagonalLine,
+            this.drawRope,this.drawHead,this.drawBody,this.drawLeftFoot,this.drawRightFoot,
+            this.drawLeftArm,this.drawRightArm,this.drawLeftEye,this.drawRightEye,this.drawMouth];
+        
+        /* drawList.forEach(item=>{
+            item.apply(this.canvasDrawer);
+        }) */
+        this.clearCanvas(); 
+      
+        for (let i = 0; i < drawparts; i++){
+            console.log('mennyi loop?');
+            drawList[i].call(this.canvasDrawer);
+        } 
+        
+    }
+    
     drawBottom() {
-        this.canvasDrawer.moveTo(10,280);
-        this.canvasDrawer.lineTo(80,280);
-        this.canvasDrawer.stroke();
+       console.log(this)
+        this.lineWidth = 10;
+        this.moveTo(10,280);
+        this.lineTo(80,280);
+        this.stroke();  
     }
 
     drawMainLine() {
-        this.canvasDrawer.moveTo(45,280);
-        this.canvasDrawer.lineTo(45,50);
-        this.canvasDrawer.stroke();
+       
+        this.lineWidth = 10;
+        this.moveTo(45,280);
+        this.lineTo(45,50);
+        this.stroke();
     }
 
     drawHorizontalLine() {
-        this.canvasDrawer.moveTo(40,50);
-        this.canvasDrawer.lineTo(150,50);
-        this.canvasDrawer.stroke();    
+        
+        this.lineWidth = 10;
+        this.moveTo(40,50);
+        this.lineTo(150,50);
+        this.stroke();    
     }
 
     drawDiagonalLine() {
-        this.canvasDrawer.moveTo(45,90);
-        this.canvasDrawer.lineTo(75,50);
-        this.canvasDrawer.stroke();    
+       
+        this.lineWidth = 10;
+        this.moveTo(45,90);
+        this.lineTo(75,50);
+        this.stroke();    
     }
 
     drawRope() {
-        this.canvasDrawer.moveTo(145,50);
-        this.canvasDrawer.lineTo(145,90);
-        this.canvasDrawer.stroke(); 
+       
+        this.lineWidth = 10;
+        this.moveTo(145,50);
+        this.lineTo(145,90);
+        this.stroke(); 
     }
 
     drawHead() {
-        this.canvasDrawer.lineWidth=5;
-        this.canvasDrawer.beginPath();
-        this.canvasDrawer.arc(145,114,25,0,2*Math.PI)
-        this.canvasDrawer.stroke();
+        
+        this.lineWidth=5;
+        this.beginPath();
+        this.arc(145,114,25,0,2*Math.PI)
+        this.stroke();
     }
 
     drawBody() {
-        this.canvasDrawer.moveTo(145,140);
-        this.canvasDrawer.lineTo(145,220);
-        this.canvasDrawer.stroke(); 
+      
+        this.lineWidth=5;
+        this.moveTo(145,140);
+        this.lineTo(145,220);
+        this.stroke(); 
     }
 
 
     drawLeftFoot() {
-        this.canvasDrawer.moveTo(146,220);
-        this.canvasDrawer.lineTo(125,260);
-        this.canvasDrawer.stroke(); 
+       
+        this.lineWidth=5;
+        this.moveTo(146,220);
+        this.lineTo(125,260);
+        this.stroke(); 
     }
 
 
     drawRightFoot() {
-        this.canvasDrawer.moveTo(146,220);
-        this.canvasDrawer.lineTo(165,260);
-        this.canvasDrawer.stroke(); 
+       
+        this.lineWidth=5;
+        this.moveTo(146,220);
+        this.lineTo(165,260);
+        this.stroke(); 
     }
 
-    /* ToDO:
+    drawLeftArm() {
+       
+        this.lineWidth=5;
+        this.moveTo(145,170);
+        this.lineTo(115,200);
+        this.stroke(); 
+    }
+
+    drawRightArm() {
+       
+        this.lineWidth=5;
+        this.moveTo(145,170);
+        this.lineTo(175,200);
+        this.stroke(); 
+    }
+
+    drawLeftEye() {
+        
+        this.lineWidth=3;
+        this.beginPath();
+        this.arc(135,110,5,0,2*Math.PI)
+        this.stroke();
+    }
+
+    drawRightEye() {
+       
+        this.lineWidth=3;
+        this.beginPath();
+        this.arc(155,110,5,0,2*Math.PI)
+        this.stroke();
+    }
+
+    drawMouth() {
+        
+        this.lineWidth=3;
+        this.moveTo(135,127);
+        this.lineTo(155,127);
+        this.stroke(); 
+    }
     
-        -rajzot befejezni
-        -game logicot megcsinálni
-    
-    */
+  
    
 }
