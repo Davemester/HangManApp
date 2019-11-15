@@ -5,6 +5,8 @@ export class TaskWord {
         this.wordLetters  = [];
         this.splitWordtoLetters();
         this.underscoreArray = this.makeEmptyLettersArray();
+        this.strength;
+        this.calculateStrength();
     }
 
     splitWordtoLetters() {
@@ -47,6 +49,22 @@ export class TaskWord {
 
     transformUnderScore(letter,pos) {
         this.underscoreArray.splice(pos,1,letter);
+    }
+
+    calculateStrength() {
+
+        
+        if (this.wordLetters.length<12) {
+            this.strength = 11;
+        }
+
+        if (this.wordLetters.length<14 && this.wordLetters.length>11) {
+            this.strength = 13;
+        }
+
+        if (this.strength >=14) {
+            this.strength = 15;
+        }
     }
 
 

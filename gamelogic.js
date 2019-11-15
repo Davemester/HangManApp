@@ -1,11 +1,8 @@
-
 import { Dictionary } from './dictionary.js';
 import  {AnswerCheck} from './answercheck.js';
 import {GuessArray} from './guessarray.js';
 import {Display} from './display.js';
 import { Hangman } from './hangmandraw.js';
-
-
 
 export class GameLogic {
 
@@ -18,11 +15,14 @@ export class GameLogic {
         this.startButton = document.querySelector('#start');
     }
 
-
+    setAttemptLimit (limit) {
+        this.attemptLimit = limit;
+    }
     handleGoodAnswer(word,guess) {
         
         word.transfromWord(guess.value);
         Display.showGoodAttempt(word.underscoreArray);
+        Display.clearInputField(guess);
         
     }
 
@@ -34,14 +34,15 @@ export class GameLogic {
         Display.showGuessedLetters(this.guessArray.guessArray);
         Display.showAttemptsLeft(this.attemptLimit-this.attempts)
         this.hangman.drawHangMan(this.attempts);
+        Display.clearInputField(guess);
     }
 
     prepeareNewGame(word) {
-        //this.startButton.onclick='';
+        
         this.hangman.clearCanvas();
         Display.boardReset(); 
         Display.hideImages();
-       
+        this.setAttemptLimit(word.strength);
         
         Display.showUnderScore(word.underscoreArray);  
         Display.showLenght(word.wordLetters.length);
@@ -49,19 +50,18 @@ export class GameLogic {
     }
 
     handleWinning(button) {
-        console.log('you win');
         Display.resetEventListener(button);
         this.attempts=0;
         Display.showWinningImage();
-        //this.startButton.onclick=this.start;
+        
     }
 
-    handleLoosing(button) {
-        console.log('LOser!!!!!!');
+    handleLoosing(button,word) {
+        Display.showFullWord(word.wordLetters)
         Display.resetEventListener(button);
         this.attempts=0;
         Display.showLooseImage();
-        //this.startButton.onclick=this.start;
+        
     }
 
     async start() {
@@ -69,6 +69,7 @@ export class GameLogic {
         let word = await task.makeTaskWord();
         let guess = document.getElementById('guess');
         let button = document.getElementById('submit');
+     
         this.prepeareNewGame(word);
         console.log(word);
         button.addEventListener('click', event=>{
@@ -82,15 +83,12 @@ export class GameLogic {
             }
 
             if (this.attempts === this.attemptLimit) {
-               this.handleLoosing(button);
+               this.handleLoosing(button,word);
                 return;
             }
-
-          
-               
         }) 
+
         
     }
-    
-
 }
+

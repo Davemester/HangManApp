@@ -17,6 +17,16 @@
         });
     }
 
+    static showFullWord(array) {
+        array.forEach((element,index) => {
+            let html = document.querySelector('#answer').children[index].firstElementChild;
+            html.textContent = element;
+        });
+    }
+    static clearInputField(inputfield) {
+        inputfield.value='';
+    }
+
     static showUnderScore(array) {
 
         array.forEach(elem => {
@@ -57,7 +67,7 @@
     }
 
     static resetEventListener(element){
-        let el = element;     /* document.querySelector('.colorpicker'); */
+        let el = element;    
         let elClone = el.cloneNode(true);   
 
         el.parentNode.replaceChild(elClone, el);

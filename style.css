@@ -1,6 +1,16 @@
+
+
+.container {
+    background-color: rgb(243, 234, 234);
+    text-shadow: black 1px 1px;
+    text-decoration-style: wavy;
+    color:palevioletred;
+    border: black solid 1px;
+}
 .col-10,.col-5{
     margin: auto; 
-    
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #answer {
@@ -11,6 +21,12 @@
 
 h1 {
     text-align: center;
+    color:palevioletred;
+    text-transform: uppercase;
+    text-shadow: black 4px 3px;
+    text-decoration-style: wavy;
+
+    /* text-decoration: black 1px; */
 }
 #length,#attemptsleft,#guess {
     width:25px;
@@ -18,16 +34,29 @@ h1 {
 }
 
 .letter {
-    margin: 12px;
+    margin: auto;
     text-transform: uppercase;
+
+    
+}
+button{
+    margin-left: 40%;
+  
     
 }
 
 #hangman {
-    border: solid black 1px;
+
     margin: auto;
 }
 
 #winimage,#gameover {
     display: none;
+}
+#submit {
+    margin-left: 2%;
+    margin-top: 5%;
+}
+p {
+    margin: auto;
 }
