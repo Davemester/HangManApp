@@ -1,5 +1,10 @@
 
-
+body {
+    letter-spacing: 2px;
+}
+h1 {
+    letter-spacing: 4px;
+}
 .container {
     background-color: rgb(243, 234, 234);
     text-shadow: black 1px 1px;

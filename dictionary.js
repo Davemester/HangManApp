@@ -8,7 +8,7 @@ export class Dictionary {
 
 
     async makeDictonary () {
-        const fileUrl = 'http://127.0.0.1:5500/words.txt';
+        const fileUrl = 'words.txt';
         console.log(fileUrl);
         return fetch(fileUrl).then(r=>r.text()).then(t=>{
             let rawDict = t.split('\n');

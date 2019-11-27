@@ -28,7 +28,6 @@ export class Hangman {
             this.drawRope,this.drawHead,this.drawBody,this.drawLeftFoot,this.drawRightFoot,
             this.drawLeftArm,this.drawRightArm,this.drawLeftEye,this.drawRightEye,this.drawMouth];
        
-
         drawList[drawparts-1].call(this.canvasDrawer);
         
     }
